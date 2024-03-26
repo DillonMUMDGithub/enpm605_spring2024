@@ -15,8 +15,22 @@ class Enemy(ABC):
     """
 
     def __init__(self, name="Enemy", health=50):
-        self.name = name
-        self.health = health
+        self._name = name
+        self._health = health
+        
+    @property
+    def name(self):
+        """
+        str: The name of the enemy.
+        """
+        return self._name
+    
+    @name.setter
+    def name(self, name):
+        if isinstance(name, str):
+            self._name = name
+        else:
+            raise ValueError("The name must be a string.")
 
     def __str__(self):
         """
@@ -25,7 +39,7 @@ class Enemy(ABC):
         Returns:
             str: The string representation of the enemy.
         """
-        return f"{self.name} has {self.health} health."
+        return f"{self._name} has {self._health} health."
     
     def __repr__(self):
         """
@@ -34,7 +48,7 @@ class Enemy(ABC):
         Returns:
             str: The string representation of the enemy.
         """
-        return f"{self.name} has {self.health} health."
+        return f"{self._name} has {self._health} health."
 
     @abstractmethod
     def attack(self, player: rpg.player.Player, damage):
@@ -45,10 +59,16 @@ class Enemy(ABC):
             player (Player): The player to attack.
             damage (int): The amount of damage to deal.
         """
+<<<<<<< HEAD
         pass
         # print(f"🧟🗡️ {self.name} attacks {player.name}!")
         # player.take_damage(damage)
     @abstractmethod
+=======
+        print(f"🧟🗡️ {self._name} attacks {player.name}!")
+        player.take_damage(damage)
+
+>>>>>>> bf824ab27f088bf3d249d3a6d9767ed2b97de424
     def take_damage(self, damage):
         """
         Take damage from the player.
@@ -56,6 +76,7 @@ class Enemy(ABC):
         Args:
             damage (int): The amount of damage to take.
         """
+<<<<<<< HEAD
         pass
         # self.health -= damage
         # if self.health <= 0:
@@ -68,6 +89,14 @@ class Enemy(ABC):
         """_summary_
         """
         return [cls("Goblin"),cls("Vampire")]
+=======
+        self._health -= damage
+        if self._health <= 0:
+            print(f"🧟💀 {self._name} has been defeated!")
+        else:
+            print(f"🧟💜 {self._name} has {self._health} health left.")
+
+>>>>>>> bf824ab27f088bf3d249d3a6d9767ed2b97de424
 
 class Skeleton(Enemy):
     """
