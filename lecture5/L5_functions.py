@@ -342,7 +342,6 @@
 # def display_hello():
 #     print("Hello")
 
-
 # # Applying the decorator to display_hello()
 # decorated_hello = decorate(display_hello)
 # display_hello()  # calls display_hello()
@@ -372,9 +371,9 @@
 # # --     SLIDE 42    -- #
 # # %%%%%%%%%%%%%%%%%%%%% #
 # def decorate(original_function):
-#     def wrap_decorate():
+#     def wrap_decorate(*args):
 #         print("~*" * 10)
-#         original_function()
+#         original_function(*args)
 #         print("~*" * 10)
 
 #     return wrap_decorate
@@ -611,3 +610,38 @@
 # debug_log("This is a debug message.")
 # info_log("This is an info message.")
 # error_log("This is an error message.")
+
+
+
+## Function Exercises
+# Exercise Slide 49
+import functools
+
+count=0
+def decorate(Function):
+    @functools.wraps(Function)
+    def wrap_decorate(*args):
+        global count
+        count = count+1
+        print("Run Number",count,":")
+        return(Function(*args))
+    return wrap_decorate
+
+@decorate
+def greet():
+    print("Hello")
+    return 
+
+greet()
+greet()
+greet()
+#Exercise Slide 52
+
+from functools import partial
+def subtract(x,y):
+    return(x-y)
+
+less = partial(subtract,y=3)
+print(less(7)) #4
+print(less(12)) #9
+print(less(20)) #17

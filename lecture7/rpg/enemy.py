@@ -1,10 +1,11 @@
 
 import rpg.player 
+from abc import ABC,abstractmethod
 """
 This file contains the Enemy class.
 """
 
-class Enemy():
+class Enemy(ABC):
     """
     A class representing an enemy in the game.
 
@@ -35,6 +36,7 @@ class Enemy():
         """
         return f"{self.name} has {self.health} health."
 
+    @abstractmethod
     def attack(self, player: rpg.player.Player, damage):
         """
         Attack the player.
@@ -43,9 +45,10 @@ class Enemy():
             player (Player): The player to attack.
             damage (int): The amount of damage to deal.
         """
-        print(f"🧟🗡️ {self.name} attacks {player.name}!")
-        player.take_damage(damage)
-
+        pass
+        # print(f"🧟🗡️ {self.name} attacks {player.name}!")
+        # player.take_damage(damage)
+    @abstractmethod
     def take_damage(self, damage):
         """
         Take damage from the player.
@@ -53,12 +56,18 @@ class Enemy():
         Args:
             damage (int): The amount of damage to take.
         """
-        self.health -= damage
-        if self.health <= 0:
-            print(f"🧟💀 {self.name} has been defeated!")
-        else:
-            print(f"🧟💜 {self.name} has {self.health} health left.")
-
+        pass
+        # self.health -= damage
+        # if self.health <= 0:
+        #     print(f"🧟💀 {self.name} has been defeated!")
+        # else:
+        #     print(f"🧟💜 {self.name} has {self.health} health left.")
+    @classmethod
+    def create_enemies(cls):
+        #cls is the same thing as calling the class -> Enemy("Goblin")
+        """_summary_
+        """
+        return [cls("Goblin"),cls("Vampire")]
 
 class Skeleton(Enemy):
     """
@@ -72,6 +81,8 @@ class Skeleton(Enemy):
         super().__init__(name=name, health=50)
         self._shield_power = shield_power
         
+    def attack(self, player: rpg.player.Player, damage):
+        pass  
     def take_damage(self, damage):
         """
         Take damage from the player.
@@ -80,6 +91,9 @@ class Skeleton(Enemy):
             damage (int): The amount of damage to take.
         """
         super().take_damage(damage - self._shield_power)
+        
+    # def terrify(self,player):
+    #     player.Attack
         
 class Dragon(Enemy):
     """
@@ -102,9 +116,11 @@ class Dragon(Enemy):
             damage (int): The amount of damage to deal.
         """
         super().attack(player, damage + self._fire_breath_power)
- 
+    def use_tail_whip(player):
+        pass
         
 if __name__ == "__main__":
     print("Creating an enemy:")
-    enemy = Enemy()
-    enemy.attack(rpg.player.Player(), 10)
+    # enemy = Enemy()
+    skeleton = Skeleton()
+    # enemy.attack(rpg.player.Player(), 10)

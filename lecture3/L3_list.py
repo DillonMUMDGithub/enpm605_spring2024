@@ -24,15 +24,17 @@
 # a = [1, 2, 3]
 # b = [1, "hello", 3.5]
 # c = ["a", [1, 2, 3.5], ["b", ["c", "d", 1, 2, 3]]]
+# print(c[2])
+
 
 # # ----Slide 8 ---- #
 # fruits1 = ["apple", "banana", "cherry"]
 # fruits2 = ["cherry", "banana", "apple"]
 # fruits3 = ["apple", "banana", "cherry"]
-# print(fruits1 == fruits2)  # False
-# print(fruits1 is fruits2)  # False
 # print(fruits1 == fruits3)  # True
 # print(fruits1 is fruits3)  # False
+# print(fruits1 is fruits2)  # False
+# print(fruits1 == fruits2)  # False
 
 # # ----Slide 9 ---- #
 # x = [int, print, "cherry", 1, 2.5, print, str, str]
@@ -50,7 +52,7 @@
 # # ---
 # # create an empty list
 # square_num = []
-# # use a loop to fill out the list
+# # # use a loop to fill out the list
 # for num in range(1, 5):
 #     square_num.append(num * num)  # [1, 2, 9, 16]
 
@@ -103,8 +105,9 @@
 
 ## ---- Exercise ---- #
 # fruits = ["apple", "banana", "cherry", "pear", "kiwi"]
-# # write code here
+# fruits[3] = []
 # print(fruits)  # ['apple', 'banana', 'cherry', [], 'kiwi']
+# print(type(fruits[3]))
 
 # # ----Slide 16 ---- #
 # fruits = ["apple", "banana", "cherry", "kiwi", "apple"]
@@ -146,6 +149,7 @@
 
 # # ----Slide 19 ---- #
 # letters = ["a", ["bb", ["ccc", "ddd"], "ee", "ff"], "g"]
+# print(letters[1][1][1])
 
 
 # # ----Slide 20 ---- #
@@ -221,18 +225,18 @@
 
 
 # # ----Slide 24 - Quiz ---- #
-# a = [0, 1, [2, 3]]
-# print(a.pop().pop())
-# print("-" * 10)
+a = [0, 1, [2, 3]]
+print(a.pop().pop())
+print("-" * 10)
 
-# a = ["1", "2", "3"]
-# print(a[1:])
-# print("-" * 10)
+a = ["1", "2", "3"]
+print(a[1:])
+print("-" * 10)
 
-# x = ["a", "b"]
-# y = "cde"
-# print(x.extend(y))
-# print("-" * 10)
+x = ["a", "b"]
+y = "cde"
+print(x.extend(y))
+print("-" * 10)
 
 # fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
 # output = [x for x in fruits if "a" in x]
@@ -241,5 +245,6 @@
 
 # Use slicing to remove "apple", "banana", "cherry" from the list
 # fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
-
+# del fruits[0:3]
+# print(fruits)
 

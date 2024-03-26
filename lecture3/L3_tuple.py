@@ -56,3 +56,17 @@
 # fruits[1][0] = "cherry"
 # print(fruits)  # ('apple', ['cherry', 'orange']
 # fruits[1] = []  # TypeError: 'tuple' object does not support item assignment
+import numpy as np
+A = np.array(1)
+print(A)
+# print(A)
+# B = np.append(A,2)
+# print(B)
+# np.delete(A)
+
+for i in range(0,5):
+    A = np.append(A,i)
+    print(A)
+print(A[1])
+print(A[-1])
+print(type(A))

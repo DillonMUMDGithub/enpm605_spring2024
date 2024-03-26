@@ -3,15 +3,27 @@ This file contains the player class.
 """
 
 import random
+# from item import Item
+# import player
 
 
 class Player:
     def __init__(self, name="Hero", health=100):
         self.name = name
         self.health = health
+        self.inv= [0,0]
+        
+        
+   # Mutators
+    def set_name(self, name):
+       if isinstance(name,str):
+           self._name = name
+       else:
+           raise TypeError("Name must be a string")     
 
     def __str__(self):
-        return f"{self.name} has {self.health} health."
+        return f"your inventory has {self.inv[0]} arrows and {self.inv[1]} keys."
+
 
     def __iter__(self):
         return iter([self.name, self.health])
@@ -57,6 +69,9 @@ class Player:
         """
         print(f"🤴🛡️ {self.name} defends!")
 
+        
+        
+    
     def take_damage(self, damage):
         """
         Take damage from an attack.
@@ -81,7 +96,30 @@ class Player:
                 print(f"🤴💚 {self.name} has {self.health} health left.")
 
 
-if __name__ == "__main__":
-    arthur = Player("Arthur")
-    arthur.health = "hello"
-    arthur.take_damage(50)
+    def pickup(self,item):
+        if item.item_type == 'Heart':
+            self.health += 10
+            print(f"Picked up {item.item_type}!")
+        if item.item_type == 'Arrow':
+            print(f"Picked up {item.item_type}!")
+            self.inv[0] +=1    
+        if item.item_type == 'Key':
+            print(f"Picked up a {item.item_type}!")
+            self.inv[1] +=1    
+            return
+    
+# if __name__ == "__main__":
+    # arthur = Player("Arthur")
+    # Arrow1 = Item("Arr1","The first arrow","Arrow")
+    # Heart1 = Item("Heart1","The first Heart","Heart")
+    # Key1 = Item("Heart1","The first Heart","Key")
+    # print(arthur.health)
+    # # arthur.take_damage(50)
+    # arthur.pickup(Arrow1)
+    # print(arthur.health)
+    # arthur.pickup(Heart1)
+    # print(arthur.health)
+    # print(arthur)
+    # arthur.pickup(Key1)
+    # print(arthur)
+     
